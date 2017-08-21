@@ -8,9 +8,12 @@ import { DashboardComponent }   from './Dashboard/dashboard.component';
 import { HeroDetailComponent }  from './ClubDetail/hero-detail.component';
 import { HeroesComponent }      from './ListClubs/heroes.component';
 import { HeroService }          from './hero.service';
+import { PlayersComponent }     from './ListPlayers/players.component';
+import { PlayerService }        from './player.service';
 import { HeroSearchComponent }  from './Search/hero-search.component';
 
 import { AppRoutingModule }     from './app-routing.module';
+import {PlayerDetailComponent} from "./PlayerDetail/player-detail.component";
 
 // Imports for loading & configuring the in-memory web api
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -29,9 +32,11 @@ import { AppRoutingModule }     from './app-routing.module';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
+    PlayersComponent,
+    PlayerDetailComponent,
     HeroSearchComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, PlayerService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

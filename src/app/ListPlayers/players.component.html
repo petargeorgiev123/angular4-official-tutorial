@@ -1,0 +1,33 @@
+<h2>My Players</h2>
+
+<div>
+    <label>Player name:</label>
+    <input #playerName />
+
+    <select #club ngModel>
+        <option value="" disabled>Choose a club</option>
+        <option *ngFor="let club of clubs" [ngValue]="club">
+            {{ club.name }}
+        </option>
+    </select>
+
+    <!-- investigate how to reset the club checkbox -->
+    <button (click)="add(playerName.value, club.value); playerName.value=''; club.value=''">
+        Add
+    </button>
+</div>
+<ul class="players">
+  <li *ngFor="let player of players" (click)="onSelect(player)"
+      [class.selected]="player === selectedPlayer">
+    <span class="badge">{{player.id}}</span>
+    <span>{{player.name}} Club: {{player.club.name}}</span>
+    <button class="delete"
+            (click)="delete(player); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedPlayer">
+  <h2>
+    {{selectedPlayer.name | uppercase}} is my player
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
