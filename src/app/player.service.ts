@@ -52,10 +52,10 @@ export class PlayerService {
             .catch(this.handleError);
     }
 
-    update(player: Player): Promise<Player> {
+    update(player: Player, clubId: number): Promise<Player> {
         const url = `${this.playersUrl}/${player.id}`;
         return this.http
-            .put(url, JSON.stringify({name: player.name, club: player.club.id}), {headers: this.headers})
+            .put(url, JSON.stringify({name: player.name, club: clubId}), {headers: this.headers})
             .toPromise()
             .then(() => player)
             .catch(this.handleError);
