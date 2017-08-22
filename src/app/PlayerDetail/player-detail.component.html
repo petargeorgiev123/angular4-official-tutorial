@@ -1,18 +1,25 @@
-<div *ngIf="player">
+<div *ngIf="player" class="row">
     <h2>{{player.name}} details!</h2>
     <!--<div><label>id: </label>{{hero.id}}</div>-->
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="player.name" placeholder="name"/>
+    <div class="col-md-12 mtop20">
+        <div class="col-md-1"><label>Name: </label></div>
+        <div class="col-md-3">
+            <input [(ngModel)]="player.name" placeholder="name"/>
+        </div>
     </div>
 
-    <select [ngModel]="selectedObject | json" (ngModelChange)="updateSelectedValue($event)">
-        <option *ngFor="let club of objClub" [value]="club | json" >{{club.name}} </option>
-    </select>
-    <!--<div>
-        <label>phone: </label>
-        <input [(ngModel)]="hero.telefono" placeholder="telefono"/>
-    </div>-->
+    <div class="col-md-12 mtop20">
+        <div class="col-md-1"><label>Club: </label></div>
+        <div class="col-md-3">
+            <select [ngModel]="selectedObject | json" (ngModelChange)="updateSelectedValue($event)">
+            <option *ngFor="let club of objClub" [value]="club | json" >{{club.name}} </option>
+            </select>
+        </div>
+    </div>
 </div>
-<button (click)="goBack()">Back</button>
-<button (click)="save()">Save</button>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-1"><button class="btn-primary" (click)="save()">Save</button></div>
+        <div class="col-md-1"><button class="btn-default" (click)="goBack()">Back</button></div>
+    </div>
+</div>

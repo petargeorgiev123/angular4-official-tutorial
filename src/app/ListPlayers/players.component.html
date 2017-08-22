@@ -12,22 +12,24 @@
     </select>
 
     <!-- investigate how to reset the club checkbox -->
-    <button (click)="add(playerName.value, club.value); playerName.value=''; club.value=''">
+    <button class="btn-primary" (click)="add(playerName.value, club.value); playerName.value=''; club.value=''">
         Add
     </button>
 </div>
-<ul class="players">
-  <li *ngFor="let player of players" (click)="onSelect(player)"
-      [class.selected]="player === selectedPlayer">
-    <span class="badge">{{player.id}}</span>
-    <span>{{player.name}} Club: {{player.club.name}}</span>
-    <button class="delete"
-            (click)="delete(player); $event.stopPropagation()">x</button>
-  </li>
-</ul>
+<div class="row">
+    <div class="players col-sm-12">
+      <div *ngFor="let player of players" (click)="onSelect(player)"
+          [class.selected]="player === selectedPlayer">
+
+        <span class="badge">{{player.id}}</span>
+        <span>{{player.name}} Club: {{player.club.name}}</span>
+        <button class="delete" (click)="delete(player); $event.stopPropagation()">x</button>
+      </div>
+    </div>
+</div>
 <div *ngIf="selectedPlayer">
   <h2>
     {{selectedPlayer.name | uppercase}} is my player
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button class="btn-primary" (click)="gotoDetail()">View Details</button>
 </div>
