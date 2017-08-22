@@ -7,7 +7,7 @@
     </div>
 
     <select [ngModel]="selectedObject | json" (ngModelChange)="updateSelectedValue($event)">
-        <option *ngFor="let club of objClub" [value]="club | json" >{{club.name}} {{player.club.id}}</option>
+        <option *ngFor="let club of objClub" [value]="club | json" >{{club.name}} </option>
     </select>
     <!--<div>
         <label>phone: </label>

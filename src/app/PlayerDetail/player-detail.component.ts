@@ -8,11 +8,6 @@ import { HeroService } from '../hero.service';
 
 import 'rxjs/add/operator/switchMap';
 
-interface TestObject {
-    name: string;
-    value: number;
-}
-
 @Component({
     selector: 'player-detail',
     templateUrl: './player-detail.component.html',
@@ -22,7 +17,6 @@ interface TestObject {
 export class PlayerDetailComponent implements OnInit {
     //@Input() player: Player;
     player: Player;
-    objPlayer: Player[];
 
     objClub:  Hero[];
     selectedObject: Hero;
@@ -33,11 +27,6 @@ export class PlayerDetailComponent implements OnInit {
         private location: Location,
         private heroService: HeroService
     ) {
-
-        //this.objArray = [{name: 'foo'}, {name: 'bar'}];
-
-        //this.selectedObject = this.objArray[1];
-
     }
 
     getClubs(): void {
@@ -47,7 +36,7 @@ export class PlayerDetailComponent implements OnInit {
     }
 
     updateSelectedValue(event: string): void {
-        //this.selectedObject = JSON.parse(event);
+        this.selectedObject = JSON.parse(event);
     }
 
     goBack(): void {
@@ -70,8 +59,7 @@ export class PlayerDetailComponent implements OnInit {
     }
 
     save(): void {
-        console.log(this.player);
-        this.playerService.update(this.player)
+        this.playerService.update(this.player, this.selectedObject.id)
             .then(() => this.goBack());
     }
 }
